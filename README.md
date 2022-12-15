@@ -4,7 +4,7 @@
 运行`python main.py`  
 若要指定文件保存路径 运行`python main.py -p [指定路径]`   
 若要开启手动识别验证码（不建议）,运行`python main.py -m `   
-## requirement
+## requirements
 * BeautifulSoup
 * pandas
 * requests
