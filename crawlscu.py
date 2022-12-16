@@ -1,6 +1,7 @@
 import requests
 import hashlib
 import random
+import  os
 from pandas.io.json import json_normalize
 from bs4 import BeautifulSoup
 
@@ -97,6 +98,8 @@ class Spider(object):
         保存为xls文件
         """
         df=json_normalize(data)
+        if not os.path.isdir(path):
+            os.mkdir(path)
         df.to_excel(path+"/original.xls",sheet_name="courses")
         df = df [["kcm","zcsm","xqm","jxlm","jash","kkxsh","jsm","xf","kslxmc","kkxsm","id.kxh","id.kch","id.skxq","id.skjc"]] # 只保留 课程名 教学周数 校区名 教学楼名 教室号 开课学院代码 任课老师名 学分 考察方式 开课学院名 课程号 课序号 上课星期 起始小节
         df.columns= ["课程名","教学周数"," 校区名" ,"教学楼名","教室号","开课学院代码","任课老师名"," 学分","考察方式 ","开课学院名"," 课程号","课序号","上课星期","起始小节"]
